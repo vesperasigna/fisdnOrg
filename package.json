@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/vesperasigna/fisdnOrg#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-mysql-session": "^2.1.2",

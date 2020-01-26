@@ -1,4 +1,5 @@
 const express = require('express');
+const BodyParser = require('body-parser');
 const dotenv = require('dotenv');
 dotenv.config();
 const PORT = process.env.PORT;
@@ -7,10 +8,12 @@ const PORT = process.env.PORT;
 const fisdnHub = express();
 
 // MIDDLEWARE
+fisdnHub.use(BodyParser.json());
+fisdnHub.use(BodyParser.urlencoded({extended:true}));
 // for parsing application/json
-fisdnHub.use(express.json());
+//fisdnHub.use(express.json());
 // for parsing application/x-www-form-urlencoded
-fisdnHub.use(express.urlencoded({ extended: true }));
+//fisdnHub.use(express.urlencoded({ extended: true }));
 
 // ROUTERS
 const adminRouter = require('./routes/admin');

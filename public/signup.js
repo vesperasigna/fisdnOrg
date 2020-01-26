@@ -8,20 +8,21 @@ let passwordConfirm = document.querySelector('#password-confirm').value;
 
 if(password === passwordConfirm)
 {
-
-}
-else
-{
-    
-}
-
-// simulating a POST form (url-encoded) as explained in AXIOS doc: 
     let params = new URLSearchParams();
     params.append('email', email);
     params.append('password', password);
 
     axios.post('http://localhost:5050/admin/signup', params)
-    .then(() => {
-        window.location.replace("http://localhost:5050/login");    
+    .then((response) => {   
+        console.log(response)    
     })
+    .catch((err) => {
+        console.log(err);
+    })
+}
+else
+{
+    window.location.replace("http://localhost:5050/admin/signup");    
+
+}
 })

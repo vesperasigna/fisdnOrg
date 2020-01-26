@@ -5,12 +5,11 @@ const path = require('path');
 
 // a cookieParser has been integrated in express 4, 
 // no need to add:
-// const CookieParser = require('cookie-parser');
-// adminRouter.use(CookieParser());
+const CookieParser = require('cookie-parser');
+adminRouter.use(CookieParser());
 
 //bodyParser is set directly on server.js, no need to add: 
-//adminRouter.use(BodyParser.json());
-//adminRouter.use(BodyParser.urlencoded({extended:true}));
+
 
 
 // launch session-authentication
@@ -50,12 +49,8 @@ adminRouter.get('/', (req, res) => {
     }
     else 
     {
-        res.redirect('/admin/login')
+        res.redirect('/admin/login');
     }  
-});
-
-adminRouter.get('/signup', (req, res) => {
-        res.sendFile(path.resolve("views/signup.html"));
 });
 
 adminRouter.get('/login', (req, res) => {
@@ -71,7 +66,7 @@ adminRouter.get('/login', (req, res) => {
 
 adminRouter.post('/login', passport.authenticate('local-login', { failureRedirect: '/admin/login' }),
 function(req, res) {
-// this only won't be sufficient to redirect
+// this only won't be sufficient to redirect.
 // You must add, on the front-side, inside axios.then :
 // window.location.replace("routeToLoginPage") 
   res.redirect('/admin');
@@ -80,6 +75,15 @@ function(req, res) {
 adminRouter.get('/logout', (req, res)=>{
     req.logout();
     res.redirect('/admin/login');
+});
+
+
+adminRouter.get('/signup', (req, res) => {
+    res.sendFile(path.resolve("views/signup.html"));
+});
+
+adminRouter.post('/signup', passport.authenticate('local-signup'), (req, res) => {
+res.send('sucess');
 });
 
 
