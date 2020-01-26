@@ -102,6 +102,19 @@ body {
   visibility: visible;
 }
 
+.main-footer__info
+{
+  padding: 0 5px; /* trbl */
+  color: #c8c3a9;
+  font-size: .8rem;
+  font-weight: lighter;
+}
+.main-footer__info-data
+{
+  color: #ffe66d;
+  font-size: .8rem;
+}
+
 #right-c-container {
   display: flex;
   flex-direction: column;

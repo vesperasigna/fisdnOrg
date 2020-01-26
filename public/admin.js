@@ -1,6 +1,14 @@
 /* ====================================================
 // HELPER FUNCTIONS
 ======================================================= */
+const renderLoader = parent => {
+  const loader = `
+        <div class="loader">
+        <img src="/admin/assets/images/three-dots.svg" />
+        </div>
+    `;
+  parent.insertAdjacentHTML("afterbegin", loader);
+};
 const isPressed = el => {
   if (el.classList.contains("button-pressed")) {
     return true;
@@ -73,6 +81,26 @@ const changeMainCFooter = () => {
   }
 }
 
+/* ====================================================
+// DATA HELPER FUNCTIONS
+======================================================= */
+const renderLast = () => {
+  axios.get('http://fisdn.org/api/films/last')
+  .then(response => {
+    console.log(response);
+    let footerInfo = document.querySelector('.main-footer__info');
+    footerInfo.innerHTML = "";
+    footerInfo.innerHTML = `
+    Last saved film: <span class='main-footer__info-data'> ${response.data[0].filmEnglishTitle}</span> from <span class='main-footer__info-data'>${response.data[0].directorName}</span> (ID: <span class='main-footer__info-data'>${response.data[0].ID}</span>)
+    `
+  })
+}
+
+/* ====================================================
+// PRINT LAST FILM AT OPENING
+======================================================= */
+renderLast();
+
 
 
 /* ====================================================
@@ -81,6 +109,7 @@ const changeMainCFooter = () => {
 mainCContainer = document.querySelector("#main-c-container");
 mainC = document.querySelector("#main-c");
 mainCFooter = document.querySelector("#main-c__footer");
+mainFooter = document.querySelector("#main-footer");
 rightC = document.querySelector("#right-c-container");
 rightCPrompt = document.createElement('span');
 rightCPrompt.innerHTML = ">";
@@ -247,7 +276,7 @@ buttonUpdate.addEventListener("click", () => {
 
 /* ====================================================
 // INTERFACES FILM
-// CREATION D'INPUTS
+// INPUT FACTORY
 ======================================================= */
 let filmEnglishTitleInputGroup = createDefaultInputGroup(
   "default-input",
@@ -393,8 +422,8 @@ buttonExec.addEventListener("click", () => {
             console.log(response);
             if (response.status == 200) {
                 rightCMsg.innerHTML = `
-                A new film has been created.<br> 
-                It has received the ID: ${response.data.insertId}.<br>
+                The film has just been stored,<br> 
+                receiving the ID: ${response.data.insertId}.<br>
                 See more info here :<br>
                 <a style="color:#ffe66d" href="http://fisdn.org/api/films/${response.data.insertId}" target="_blank">
                 fisdn.org/api/films/${response.data.insertId}</a>`;
@@ -404,11 +433,13 @@ buttonExec.addEventListener("click", () => {
                 resetField(directorNameInputGroup);
                 resetField(filmYearInputGroup);
                 resetField(filmImageInputGroup);   
+
+                renderLast();
               
             }
             if (res.status == 400) {
               rightCMsg.innerHTML = `
-                The film has NOT been created<br> 
+                The film has NOT been stored<br> 
                 Please,<br> 
                 be sure that your data is correct !<br>`;
                 renderEl(rigthCTerminal, rightCMsg);
@@ -417,7 +448,7 @@ buttonExec.addEventListener("click", () => {
             else
             {
               rightCMsg.innerHTML = `
-                The film has NOT been created: <br> 
+                The film has NOT been stored: <br> 
                 the server is down.<br>
                 Please contact an admin.<br>
                 status: ${res.status}, <br>
@@ -430,7 +461,7 @@ buttonExec.addEventListener("click", () => {
             let res = error.response;
             if (res.status == 400) {
                 rightCMsg.innerHTML = `
-                  The film has NOT been created<br> 
+                  The film has NOT been stored<br> 
                   Please,<br> 
                   be sure that your data is correct !<br>`;
                   renderEl(rigthCTerminal, rightCMsg);
@@ -439,7 +470,7 @@ buttonExec.addEventListener("click", () => {
             else
             {
                 rightCMsg.innerHTML = `
-                  The film has NOT been created: <br> 
+                  The film has NOT been stored: <br> 
                   the server is down.<br>
                   Please contact an admin.<br>
                   status: ${res.status}, <br>
@@ -491,8 +522,8 @@ buttonExec.addEventListener("click", () => {
           if (res.data.msg === "1") {
             rightCMsg.innerHTML = `
             OK, <br>
-            the film whose ID was ${data.ID}<br>
-            has been deleted.<br>`;
+            the film ${data.ID}<br>
+            has just been deleted.<br>`;
             renderEl(rigthCTerminal, rightCMsg);
 
             resetField(filmIdInputGroup__delete);
@@ -548,5 +579,23 @@ buttonLogs.addEventListener("click", () => {
 // LOG OUT EVENT
 ======================================================= */
 buttonLogOut.addEventListener('click', () => {
-  window.location.replace("http://localhost:5050/admin/logout");
+
+  mainFooter.innerHTML = "";
+  renderLoader(mainFooter);
+
+  axios.get('http://localhost:5050/admin/logout')
+  .then((response) => {
+
+    window.setTimeout(() => {
+      let successButton = document.createElement('button');
+      successButton.setAttribute('class', 'button');
+      successButton.textContent = response.data.message;
+      mainFooter.innerHTML = "";
+      mainFooter.appendChild(successButton);
+      window.setTimeout(() => {
+          window.location.replace("http://localhost:5050/admin/login");    
+      }, 1000);
+      }, 2000);
+  })
 })
+

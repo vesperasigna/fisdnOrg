@@ -54,14 +54,7 @@ adminRouter.get('/', (req, res) => {
 });
 
 adminRouter.get('/login', (req, res) => {
-    if(req.isAuthenticated())
-    {
-        res.sendFile(path.resolve("views/admin.html"));
-    }
-    else
-    {
         res.sendFile(path.resolve("views/login.html"));
-    } 
 });
 
 adminRouter.post('/login', passport.authenticate('local-login', { failureRedirect: '/admin/login' }),
@@ -69,12 +62,12 @@ function(req, res) {
 // this only won't be sufficient to redirect.
 // You must add, on the front-side, inside axios.then :
 // window.location.replace("routeToLoginPage") 
-  res.redirect('/admin');
+  res.send({message: 'Logged in !'});
 });
 
 adminRouter.get('/logout', (req, res)=>{
     req.logout();
-    res.redirect('/admin/login');
+    res.send({ message : 'Logged out !'});
 });
 
 
@@ -83,7 +76,7 @@ adminRouter.get('/signup', (req, res) => {
 });
 
 adminRouter.post('/signup', passport.authenticate('local-signup'), (req, res) => {
-res.send('sucess');
+res.send({ message : 'Signed up !'});
 });
 
 
