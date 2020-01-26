@@ -12,10 +12,9 @@ body
     flex-direction: column;
     align-items: center;   
     height: 100%;
-
 }
 
-.login-block
+.signup-block
 {
   margin-top: 30vh;  
   height: 30%;  
@@ -55,7 +54,7 @@ input
     font-size: 1.1rem;
 }
 
-.login
+.signup
 {
     color: #ffe66d;
     font-size: 3rem;
@@ -70,7 +69,7 @@ input
     text-align: center;
 }
 
-.login:hover
+.signup:hover
 {
     background-color: #8c7e3c;
     color: #343434;
@@ -78,15 +77,6 @@ input
     cursor: pointer;
 }
 
-.signup-par
-{
-color: #8c7e3c;
-}
-
-.main-c__infoLink
-{
-  color: #8c7e3c;
-}
 
 @media (max-width: 900px)
 {

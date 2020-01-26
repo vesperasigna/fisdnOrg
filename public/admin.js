@@ -109,7 +109,7 @@ mainCInfo.innerHTML = `
 help you building new webpages, <br>
 <span></span><a class="main-c__infoLink" href="" target="_blank">fisdn.org/api/tools/script</a><br>
 </p>
-<p>Keep an eye on the front-side: <br>
+<p>Need to keep an eye on the front-side ? <br>
 <span></span><a class="main-c__infoLink" href="http://fisdn.org/archive" target="_blank">fisdn.org/archive</a><br>
 </p>
 `;
@@ -131,7 +131,7 @@ let buttonUpdate = document.querySelector("#left-c__buttonUpdate");
 let buttonReset = document.querySelector("#main-c__resetButton");
 let buttonExec = document.querySelector("#main-c__execButton");
 let buttonLogs = document.querySelector("#right-c__buttonLogs");
-
+let buttonLogOut = document.querySelector('#main-footer__buttonLogOut');
 
 
 
@@ -362,8 +362,8 @@ buttonReset.addEventListener("click", () => {
   {
     resetField(filmEnglishTitleInputGroup);
     resetField(directorNameInputGroup);
-    resetField(directorNameInputGroup);
-    resetField(directorNameInputGroup);
+    resetField(filmYearInputGroup);
+    resetField(filmImageInputGroup);
   }
 });
 
@@ -400,12 +400,11 @@ buttonExec.addEventListener("click", () => {
                 fisdn.org/api/films/${response.data.insertId}</a>`;
                 renderEl(rigthCTerminal, rightCMsg);
 
-                resetFields(
-                    filmEnglishTitleInputGroup,
-                    directorNameInputGroup,
-                    filmYearInputGroup,
-                    filmImageInputGroup
-                );
+                resetField(filmEnglishTitleInputGroup);
+                resetField(directorNameInputGroup);
+                resetField(filmYearInputGroup);
+                resetField(filmImageInputGroup);   
+              
             }
             if (res.status == 400) {
               rightCMsg.innerHTML = `
@@ -543,3 +542,11 @@ buttonLogs.addEventListener("click", () => {
   }
   logPrompt = window.setInterval(prompt, 1000);
   });
+
+
+  /* ====================================================
+// LOG OUT EVENT
+======================================================= */
+buttonLogOut.addEventListener('click', () => {
+  window.location.replace("http://localhost:5050/admin/logout");
+})

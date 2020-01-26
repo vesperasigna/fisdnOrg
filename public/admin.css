@@ -40,6 +40,10 @@ body {
 }
 
 #main-footer {
+  padding: 0 1%; /* trbl */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   width: auto;
   height: 8vh;
   background-color: #464646;
@@ -61,7 +65,7 @@ body {
   width: 60%;
 }
 #main-c {
-  margin: 0 15%;
+  margin: 0 15%; /* trbl */
   flex-grow: 2;
   display: flex;
   flex-direction: column;
@@ -86,7 +90,7 @@ body {
   display: flex;
   justify-content: center;
   border-top: 1px solid #fff5c99a;
-  padding: 5px 0;
+  padding: 5px 0; /* trbl */
 }
 .main-c__footer__hidden
 {
@@ -113,7 +117,7 @@ FORMS, INPUTS & LABELS
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0; /* trbl */
 }
 .default-input {
   vertical-align: middle;
@@ -164,7 +168,7 @@ FORMS, INPUTS & LABELS
   border: 1px, solid #343434;
   border-top-left-radius: .3rem;
   border-bottom-left-radius: .3rem;
-  color: #c8c3a9;
+  color: #ffe66d;
   font-size: 1rem;
   padding-left: 3px;
   max-width: 70%;
@@ -193,7 +197,7 @@ BUTTONS
   text-decoration: none;
   background-color: #343434;
   color: #ffe66d;
-  padding: 10px 8px;
+  padding: 10px 8px; /* trbl */
   font-size: 1.1rem;
   height: 40px;
 }
@@ -259,7 +263,7 @@ body {
 }
 
 #main-nav {
-  padding: 1rem 0;
+  padding: 1rem 0; /* trbl */
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
@@ -283,7 +287,7 @@ body {
 }
 
 #left-c-container {
-  padding: 1rem 0;
+  padding: 1rem 0; /* trbl */
   height: auto;
   display: flex;
   flex-direction: row;
@@ -299,7 +303,7 @@ body {
   width: 100%;
 }
 #main-c {
-  margin: 0 1rem;
+  margin: 0 1rem; /* trbl */
   display: flex;
   flex-direction: column;
   flex-grow: unset;
@@ -329,7 +333,7 @@ FORMS & INPUTS
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0; /* trbl */
 }
 .default-input {
   width: 100%;
@@ -355,7 +359,7 @@ BUTTONS
   text-decoration: none;
   background-color: #343434;
   color: #ffe66d;
-  padding: 10px 8px;
+  padding: 10px 8px; /* trbl */
   font-size: 1.1rem;
   height: 40px;
 }
@@ -377,7 +381,7 @@ AREAS & CONTROLLERS
 
 .cell {
   background-color: #464646;
-  border-width: 1px 0; 
+  border-width: 1px 0; /* trbl */
   border-color: #fff5c9;
   border-radius: .3rem;
 }

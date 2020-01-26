@@ -20,7 +20,7 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-		connection.query("select * from users where id = "+id, function(err,rows){	
+		connection.query('select * from users where id = ?', [id], function(err,rows){	
 			done(err, rows[0]);
 		});
     });
@@ -37,15 +37,15 @@ module.exports = function(passport) {
         passwordField : 'password',
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
-    function(req, email, password, done) { // callback with email and password from our form
-        console.log(email);
-         connection.query("SELECT * FROM `users` WHERE `email` = '" + email + "'", function(err,rows){
+    function(email, password, done) { // callback with email and password from our form
+        console.log('Email entered by user: '+ email);
+        connection.query('SELECT * FROM users WHERE email = ?', [email], function(err,rows){
 			if (err){
                 console.log(err);
                 return done(err);
             }
 			 if (!rows.length) {
-                return done(null, false, console.log("no such user")); // req.flash is the way to set flashdata using connect-flash
+                return done(null, false, console.log("Oops! No such email.")); // req.flash is the way to set flashdata using connect-flash
             } 
 			
 			// if the user is found but the password is wrong
