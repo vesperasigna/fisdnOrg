@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="http://localhost:5050/admin/assets/admin.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Archive Interface</title>
+</head>
+
+<body>
+    <div id="main-container" class="panel">
+
+        <nav id="main-nav" class="">
+            <button class="button" id="button-film">Film</button>
+            <button class="button" id="button-festival">Festival</button>
+            <button class="button" id="button-projection">Projection</button>
+
+
+        </nav>
+
+        <div class="" id="c-container">
+
+            <div class="cell" id="left-c-container">
+                <button class="button" id="left-c__buttonCreate">Create</button>
+                <button class="button" id="left-c__buttonDelete">Delete</button>
+                <button class="button" id="left-c__buttonUpdate">Update</button>
+            </div>
+
+            <div class="cell" id="main-c-container">
+                <div class="" id="main-c">
+                    <footer class="main-c__footer__hidden" id="main-c__footer">
+                        <button class="button" id="main-c__resetButton">Reset</button>
+                        <button class="button" id="main-c__execButton">Execute</button>
+                    </footer>
+                </div>
+                
+            </div>
+
+            <div class="cell" id="right-c-container">
+                <button class="button" id="right-c__buttonLogs">Logs</button>
+                <div class="right-c__terminalHidden" id="right-c__terminal"></div>
+
+            </div>
+
+        </div>
+
+        <footer id = "main-footer" class="">
+
+        </footer>
+    </div>
+<script src="http://localhost:5050/admin/assets/admin.js"></script>
+</body>
+</html>
