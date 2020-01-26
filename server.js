@@ -1,5 +1,5 @@
 const express = require('express');
-const BodyParser = require('body-parser');
+//const BodyParser = require('body-parser');
 const dotenv = require('dotenv');
 dotenv.config();
 const PORT = process.env.PORT;
@@ -8,17 +8,22 @@ const PORT = process.env.PORT;
 const fisdnHub = express();
 
 // MIDDLEWARE
-fisdnHub.use(BodyParser.json());
-fisdnHub.use(BodyParser.urlencoded({extended:true}));
-// for parsing application/json
-//fisdnHub.use(express.json());
-// for parsing application/x-www-form-urlencoded
-//fisdnHub.use(express.urlencoded({ extended: true }));
+//fisdnHub.use(BodyParser.json());
+//fisdnHub.use(BodyParser.urlencoded({extended:true}));
+// you can use for parsing application/json
+fisdnHub.use(express.json());
+// and for parsing application/x-www-form-urlencoded
+fisdnHub.use(express.urlencoded({ extended: true }));
 
 // ROUTERS
 const adminRouter = require('./routes/admin');
 fisdnHub.use('/admin', adminRouter);
 
+const archiveRouter = require('./routes/archive');
+fisdnHub.use('/archive', archiveRouter);
+
+
+// START SERVER
 fisdnHub.listen(PORT, ()=> {
     console.log('fisdnHub is now listening on port ' + PORT)
 ;})
