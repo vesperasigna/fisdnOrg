@@ -583,7 +583,7 @@ buttonLogOut.addEventListener('click', () => {
   mainFooter.innerHTML = "";
   renderLoader(mainFooter);
 
-  axios.get('http://localhost:5050/admin/logout')
+  axios.get('http://fisdn.org/admin/logout')
   .then((response) => {
 
     window.setTimeout(() => {
@@ -593,7 +593,7 @@ buttonLogOut.addEventListener('click', () => {
       mainFooter.innerHTML = "";
       mainFooter.appendChild(successButton);
       window.setTimeout(() => {
-          window.location.replace("http://localhost:5050/admin/login");    
+          window.location.replace("http://fisdn.org/admin/login");    
       }, 1000);
       }, 2000);
   })
