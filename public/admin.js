@@ -134,7 +134,7 @@ mainCInfo.innerHTML = `
 <a class="main-c__infoLink" href="http://fisdn.org/api/festivals/1" target="_blank">fisdn.org/api/festivals/1</a><br>
 <a class="main-c__infoLink" href="http://fisdn.org/api/projections/1" target="_blank">fisdn.org/api/festivals/1</a><br>
 </p>
-<p>This will provide you with a script designed to <br>
+<p>This will provide you with a template designed to <br>
 help you building new webpages, <br>
 <span></span><a class="main-c__infoLink" href="" target="_blank">fisdn.org/api/tools/script</a><br>
 </p>
