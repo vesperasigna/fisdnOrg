@@ -296,7 +296,7 @@ let filmYearInputGroup = createDefaultInputGroup(
 let filmImageInputGroup = createDefaultInputGroup(
   "default-input",
   "filmImage",
-  "e.g pattern.png (or enter: null)"
+  "if missing, enter: default.jpg)"
 );
 let filmIdInputGroup__delete = createDefaultInputGroup(
   "default-input",
