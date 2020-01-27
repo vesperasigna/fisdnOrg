@@ -527,6 +527,9 @@ buttonExec.addEventListener("click", () => {
             renderEl(rigthCTerminal, rightCMsg);
 
             resetField(filmIdInputGroup__delete);
+
+            renderLast();
+
           }
           else
           {
