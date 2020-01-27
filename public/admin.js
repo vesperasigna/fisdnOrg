@@ -136,7 +136,7 @@ mainCInfo.innerHTML = `
 </p>
 <p>This will provide you with a template designed to <br>
 help you building new webpages, <br>
-<span></span><a class="main-c__infoLink" href="" target="_blank">http://fisdn.org/api/tools/template</a><br>
+<span></span><a class="main-c__infoLink" href="http://fisdn.org/api/tools/template" target="_blank">fisdn.org/api/tools/template</a><br>
 </p>
 <p>Need to keep an eye on the front-side ? <br>
 <span></span><a class="main-c__infoLink" href="http://fisdn.org/archive" target="_blank">fisdn.org/archive</a><br>
