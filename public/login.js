@@ -55,7 +55,7 @@ let password = document.querySelector('#password').value;
 const renderLoader = parent => {
     const loader = `
           <div class="loader">
-          <img src="/admin/assets/images/three-dots.svg" />
+          <img src="http://fisdn.org/admin/assets/images/three-dots.svg" />
           </div>
       `;
     parent.insertAdjacentHTML("afterbegin", loader);
