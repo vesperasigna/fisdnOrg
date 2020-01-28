@@ -9,6 +9,12 @@ const PORT = process.env.PORT;
 const fisdnHub = express();
 
 // MIDDLEWARE
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "fisdn.org"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 //fisdnHub.use(BodyParser.json());
 //fisdnHub.use(BodyParser.urlencoded({extended:true}));
 // you can use for parsing application/json
