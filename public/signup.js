@@ -113,7 +113,7 @@ signupButton.addEventListener('click', () => {
 
             renderLoader(signupBlock);
     
-            axios.post('http://fisdn.org/admin/signup', params)
+            axios.post('https://fisdn.org/admin/signup', params)
             .then((response) => {  
             
                 window.setTimeout(() => {
@@ -128,7 +128,7 @@ signupButton.addEventListener('click', () => {
                     let infoText = document.createElement('p');
                     infoText.setAttribute('class', 'signup-par');
                     infoText.innerHTML = `
-                    <a class='infoLink' href="http://fisdn.org/admin/login">Now you can login here.</a>
+                    <a class='infoLink' href="https://fisdn.org/admin/login">Now you can login here.</a>
                     `
 
                     signupBlock.appendChild(infoText);

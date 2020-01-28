@@ -19,7 +19,7 @@ let password = document.querySelector('#password').value;
 
     renderLoader(loginBlock);
 
-    axios.post('http://fisdn.org/admin/login', params)
+    axios.post('https://fisdn.org/admin/login', params)
     .then((response) => {
 
         if(!response.data.message)
@@ -31,7 +31,7 @@ let password = document.querySelector('#password').value;
             successButton.textContent = 'Access Denied';
             loginBlock.appendChild(successButton);
             window.setTimeout(() => {
-                window.location.replace("http://fisdn.org/admin");
+                window.location.replace("https://fisdn.org/admin");
             }, 1000);
             }, 2000);
 	}
@@ -44,7 +44,7 @@ let password = document.querySelector('#password').value;
             successButton.textContent = response.data.message;
             loginBlock.appendChild(successButton);
             window.setTimeout(() => {
-                window.location.replace("http://fisdn.org/admin");
+                window.location.replace("https://fisdn.org/admin");
             }, 1000);
             }, 2000);
 	}
@@ -55,7 +55,7 @@ let password = document.querySelector('#password').value;
 const renderLoader = parent => {
     const loader = `
           <div class="loader">
-          <img src="http://fisdn.org/admin/assets/images/three-dots.svg" />
+          <img src="https://fisdn.org/admin/assets/images/three-dots.svg" />
           </div>
       `;
     parent.insertAdjacentHTML("afterbegin", loader);
