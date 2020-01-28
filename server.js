@@ -18,7 +18,7 @@ fisdnHub.use(express.urlencoded({ extended: true }));
 
 
 
-// ROUTERS
+/* // ROUTERS
 const adminRouter = require('./routes/admin');
 fisdnHub.use('/admin', adminRouter);
 
@@ -26,9 +26,21 @@ const archiveRouter = require('./routes/archive');
 fisdnHub.use('/archive', archiveRouter);
 
 // DOMAIN ROOT
+// Allow dotfiles - this is required for verification by Lets Encrypt's certbot
+
 fisdnHub.get('/', (req, res) => {
         res.redirect('/archive');  
+}); */
+
+fisdnHub.use(express.static(path.join(__dirname, 'public'), {dotfiles: 'allow'}));
+
+fisdnHub.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+
+
+
 
 // START SERVER
 fisdnHub.listen(PORT, ()=> {
