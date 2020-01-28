@@ -15,6 +15,9 @@ fisdnHub.use(express.json());
 // and for parsing application/x-www-form-urlencoded
 fisdnHub.use(express.urlencoded({ extended: true }));
 
+
+
+
 // ROUTERS
 const adminRouter = require('./routes/admin');
 fisdnHub.use('/admin', adminRouter);
@@ -22,6 +25,10 @@ fisdnHub.use('/admin', adminRouter);
 const archiveRouter = require('./routes/archive');
 fisdnHub.use('/archive', archiveRouter);
 
+// DOMAIN ROOT
+fisdnHub.get('/', (req, res) => {
+        res.redirect('/archive');  
+});
 
 // START SERVER
 fisdnHub.listen(PORT, ()=> {
