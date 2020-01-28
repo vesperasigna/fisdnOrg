@@ -34,7 +34,7 @@ fisdnHub.get('/', (req, res) => {
 
 fisdnHub.use(express.static(path.join(__dirname, 'public'), {dotfiles: 'allow'}));
 
-fisdnHub.get('*', (req, res) => {
+fisdnHub.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
