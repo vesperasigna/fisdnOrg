@@ -85,7 +85,7 @@ const changeMainCFooter = () => {
 // DATA HELPER FUNCTIONS
 ======================================================= */
 const renderLast = () => {
-  axios.get('http://fisdn.org/api/films/last')
+  axios.get('https://fisdn.org/api/films/last')
   .then(response => {
     console.log(response);
     let footerInfo = document.querySelector('.main-footer__info');
@@ -124,22 +124,22 @@ mainCInfo = document.createElement('div');
 mainCInfo.innerHTML = `
 <p class="auto-label"> Welcome on the FISDN admin-page. </p>
 <p>These links can help you to monitor your data : <br>
-<span>Get all films : </span><a class="main-c__infoLink" href="http://fisdn.org/api/films" target="_blank">fisdn.org/api/films</a><br>
-<span>Get all festivals : </span><a class="main-c__infoLink" href="http://fisdn.org/api/festivals" target="_blank">fisdn.org/api/festivals</a><br>
-<span>Get all projections : </span><a class="main-c__infoLink" href="http://fisdn.org/api/projections" target="_blank">fisdn.org/api/projections</a><br>
+<span>Get all films : </span><a class="main-c__infoLink" href="https://fisdn.org/api/films" target="_blank">fisdn.org/api/films</a><br>
+<span>Get all festivals : </span><a class="main-c__infoLink" href="https://fisdn.org/api/festivals" target="_blank">fisdn.org/api/festivals</a><br>
+<span>Get all projections : </span><a class="main-c__infoLink" href="https://fisdn.org/api/projections" target="_blank">fisdn.org/api/projections</a><br>
 </p>
 <p>
 <span>You can add "/id" to get a SINGLE object, e.g: <br></span>
-<a class="main-c__infoLink" href="http://fisdn.org/api/films/1" target="_blank">fisdn.org/api/films/1</a><br>
-<a class="main-c__infoLink" href="http://fisdn.org/api/festivals/1" target="_blank">fisdn.org/api/festivals/1</a><br>
-<a class="main-c__infoLink" href="http://fisdn.org/api/projections/1" target="_blank">fisdn.org/api/festivals/1</a><br>
+<a class="main-c__infoLink" href="https://fisdn.org/api/films/1" target="_blank">fisdn.org/api/films/1</a><br>
+<a class="main-c__infoLink" href="https://fisdn.org/api/festivals/1" target="_blank">fisdn.org/api/festivals/1</a><br>
+<a class="main-c__infoLink" href="https://fisdn.org/api/projections/1" target="_blank">fisdn.org/api/festivals/1</a><br>
 </p>
 <p>This will provide you with a template designed to <br>
 help you building new webpages, <br>
-<span></span><a class="main-c__infoLink" href="http://fisdn.org/api/tools/template" target="_blank">fisdn.org/api/tools/template</a><br>
+<span></span><a class="main-c__infoLink" href="https://fisdn.org/api/tools/template" target="_blank">fisdn.org/api/tools/template</a><br>
 </p>
 <p>Need to keep an eye on the front-side ? <br>
-<span></span><a class="main-c__infoLink" href="http://fisdn.org/archive" target="_blank">fisdn.org/archive</a><br>
+<span></span><a class="main-c__infoLink" href="https://fisdn.org/archive" target="_blank">fisdn.org/archive</a><br>
 </p>
 `;
 // Render this at start: 
@@ -417,7 +417,7 @@ buttonExec.addEventListener("click", () => {
 
     // send POST request no need to JSON.stringify() - by the way, it won't work
         axios
-        .post("http://fisdn.org/api/films", data)
+        .post("https://fisdn.org/api/films", data)
         .then(function(response) {
             console.log(response);
             if (response.status == 200) {
@@ -425,7 +425,7 @@ buttonExec.addEventListener("click", () => {
                 The film has just been stored,<br> 
                 receiving the ID: ${response.data.insertId}.<br>
                 See more info here :<br>
-                <a style="color:#ffe66d" href="http://fisdn.org/api/films/${response.data.insertId}" target="_blank">
+                <a style="color:#ffe66d" href="https://fisdn.org/api/films/${response.data.insertId}" target="_blank">
                 fisdn.org/api/films/${response.data.insertId}</a>`;
                 renderEl(rigthCTerminal, rightCMsg);
 
@@ -514,7 +514,7 @@ buttonExec.addEventListener("click", () => {
     console.log(data);
     if (data.ID.length)
     {
-      axios.delete(`http://fisdn.org/api/films/${data.ID}`)
+      axios.delete(`https://fisdn.org/api/films/${data.ID}`)
       .then(function (res) {
         console.log(res.data.msg);
         if (res.status == 200)
@@ -586,7 +586,7 @@ buttonLogOut.addEventListener('click', () => {
   mainFooter.innerHTML = "";
   renderLoader(mainFooter);
 
-  axios.get('http://fisdn.org/admin/logout')
+  axios.get('https://fisdn.org/admin/logout')
   .then((response) => {
 
     window.setTimeout(() => {
@@ -596,7 +596,7 @@ buttonLogOut.addEventListener('click', () => {
       mainFooter.innerHTML = "";
       mainFooter.appendChild(successButton);
       window.setTimeout(() => {
-          window.location.replace("http://fisdn.org/admin/login");    
+          window.location.replace("https://fisdn.org/admin/login");    
       }, 1000);
       }, 2000);
   })
