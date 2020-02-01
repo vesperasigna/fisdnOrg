@@ -24,7 +24,7 @@ module.exports = function(passport) {
 		connection.query('select * from users where id =?', [id], function(err,rows){	
 			done(err, rows[0]);
         });
-        // connection.end();
+        connection.end();
     });
 
 
@@ -115,6 +115,5 @@ module.exports = function(passport) {
             console.log('OK');
             return done(null, rows[0]);			
         });
-        connection.end();
     }));
 };
