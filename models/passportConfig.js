@@ -23,7 +23,8 @@ module.exports = function(passport) {
     passport.deserializeUser(function(id, done) {
 		connection.query('select * from users where id =?', [id], function(err,rows){	
 			done(err, rows[0]);
-		});
+        });
+        connection.end();
     });
 
 
@@ -49,8 +50,11 @@ module.exports = function(passport) {
         connection.query("select * from users where email = ?", [email], function(err,rows){
 			console.log(rows);
 			console.log("above row object");
-			if (err)
+            if (err)
+            {
                 return done(err);
+            }
+
 			 if (rows.length) {
                 return done(null, false, console.log("Oops! Email already taken."));
             } else {
@@ -70,7 +74,10 @@ module.exports = function(passport) {
 				return done(null, user);
 				});	
             }	
-		});
+        });
+        
+        connection.end();
+
     }));
 
 
@@ -107,6 +114,7 @@ module.exports = function(passport) {
             // all is well, return successful user
             console.log('OK');
             return done(null, rows[0]);			
-		});
+        });
+        connection.end();
     }));
 };
